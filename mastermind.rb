@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 require 'pry-byebug'
+require_relative 'introduction.rb'
+
 
 class Mastermind
+  include TextInstructions
   attr_accessor :guess 
 
   def initialize
-    create_master
+    puts instructions
+    player_selection
     @guess_number = 1
     @game_over = false
     puts 'Lets play a game.'
@@ -16,11 +20,38 @@ class Mastermind
   private
 
   def play_game
+
     play_round until @game_over == true
   end
 end
 
-def create_master
+def player_selection
+  while true 
+    player = gets.chomp.to_i
+    if player == 1 
+      create_master_maker
+      break
+    elsif player == 2
+      create_master_breaker
+      break
+    else
+      puts "Not a valid response.  Please choose 1 or 2."
+    end
+  end
+end
+
+def create_master_maker
+ while true
+  puts "Please input 4 numbers, each between 1 and 6 with no spaces in between."
+  code = gets.chomp
+    if !!(code =~ (/[1-6][1-6][1-6][1-6]/))
+      @master = code.to_i
+      break
+    end
+  end
+end
+
+def create_master_breaker
   @master = 4.times.map { 1 + Random.rand(6) } # rubocop:disable Style/RandomWithOffset
 end
 
