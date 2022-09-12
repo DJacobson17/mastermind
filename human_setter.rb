@@ -3,13 +3,11 @@ module ComputerGuess
   def create_master_maker
     loop do
       puts 'Please input 4 numbers, each between 1 and 6 with no spaces in between.'
-      code = gets.chomp
-      if !!(code =~ (/[1-6][1-6][1-6][1-6]/))
+      @answer = gets.chomp
+      if !!(@answer =~ (/[1-6][1-6][1-6][1-6]/))
         break
       end
     end
-    @answer = code
-
   end
 
   def computer_make_guess
@@ -31,7 +29,7 @@ module ComputerGuess
       end
       guesses.min.last
     else
-      1122
+      '1122'
     end
   end
 end
