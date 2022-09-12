@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-
-module TextInstructions
-
+module TextInstructions # rubocop:disable Style/Documentation
   def instructions
     <<~HEREDOC
 
@@ -29,5 +27,4 @@ module TextInstructions
       Press '2' to be the code BREAKER
     HEREDOC
   end
-
 end
