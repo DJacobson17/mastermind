@@ -59,7 +59,6 @@ class Mastermind # rubocop:disable Style/Documentation
         end
       end
     end
-    puts 'You lost'
   end
 
   def make_guess
